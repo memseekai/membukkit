@@ -5,6 +5,7 @@
 <h1 align="center">MemBukkit</h1>
 
 <p align="center">
+  <a href="https://pypi.org/project/membukkit/"><img src="https://img.shields.io/pypi/v/membukkit?style=flat-square&color=3775a9&logo=pypi&logoColor=white" alt="PyPI"/></a>
   <a href="https://github.com/memseekai/membukkit/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/memseekai/membukkit/ci.yml?branch=main&style=flat-square&label=CI" alt="CI"/></a>
   <a href="https://github.com/memseekai/membukkit/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="License"/></a>
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%2B-3776ab?style=flat-square&logo=python&logoColor=white" alt="Python"/></a>
