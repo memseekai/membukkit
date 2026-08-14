@@ -1,0 +1,34 @@
+{
+  "title": "Personal assistant memory",
+  "description": "Six months of assistant chat history: budgets that change, schedules that move, projects that evolve. Shows dated recall, knowledge updates (the answer depends on WHEN), and temporal questions.",
+  "proves": "Same memory, different as-of date → different truth",
+  "question_date": "2024-06-01",
+  "prompt_pack": "personal_assistant",
+  "data": ["chat_history.json"],
+  "questions": [
+    "How much is my rent, and when did it change?",
+    "Which days do I go to the gym, and at which location?",
+    "What did I end up doing for Lena's birthday and how much did it cost?",
+    "What's my landlord's contact?",
+    "How has the Meridian project evolved since I joined it?"
+  ],
+  "prove_beats": [
+    {
+      "label": "as of May 2024",
+      "question": "How much is my rent, and when did it change?",
+      "as_of": "2024-05-01"
+    },
+    {
+      "label": "as of June 2024",
+      "question": "How much is my rent, and when did it change?",
+      "as_of": "2024-06-01"
+    }
+  ],
+  "ask_callouts": [
+    {
+      "match": "rent",
+      "title": "As-of truth",
+      "body": "Rent was still 800€ through May; the June raise to 950€ is only current after its effective date. Flip the as-of date to see both answers from the same memory."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none" role="img" aria-label="MemBukkit">
+  <!-- Original mark: bucket + receipt. Not affiliated with Minecraft/Mojang. -->
+  <defs>
+    <linearGradient id="b" x1="28" y1="52" x2="100" y2="118" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff9a4a"/>
+      <stop offset="1" stop-color="#e0641c"/>
+    </linearGradient>
+  </defs>
+
+  <!-- receipt -->
+  <path fill="#f4f1ea" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"
+        d="M50 22h28v46H50z"/>
+  <path fill="#f4f1ea" stroke="#1a1a1a" stroke-width="2.5" stroke-linejoin="round"
+        d="M50 22l3.5-4.5 3.5 4.5 3.5-4.5 3.5 4.5 3.5-4.5 3.5 4.5 3.5-4.5 3.5 4.5"/>
+  <path stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" d="M57 36h14M57 45h14"/>
+  <path stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"
+        d="M58 55l5.5 5.5 11-12"/>
+
+  <!-- bucket -->
+  <path fill="url(#b)" stroke="#1a1a1a" stroke-width="3.5" stroke-linejoin="round"
+        d="M32 62h64l-7.5 42c-1 6.5-6.5 11-13 11H52.5c-6.5 0-12-4.5-13-11L32 62z"/>
+  <ellipse cx="64" cy="62" rx="36" ry="9" fill="url(#b)" stroke="#1a1a1a" stroke-width="3.5"/>
+  <!-- handle -->
+  <path stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"
+        d="M36 66c-9 12-7 30 8 37M92 66c9 12 7 30-8 37"/>
+</svg>

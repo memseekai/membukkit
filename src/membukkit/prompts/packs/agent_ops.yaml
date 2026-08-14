@@ -1,0 +1,17 @@
+title: Agent operations
+description: >-
+  Coding / tool agents — durable operational lessons (tool failures, retries,
+  environment quirks); exclude transient logs.
+
+extraction_instructions: |
+  Extract durable operational lessons for a future agent run:
+  - tools that failed and the error returned
+  - retry or fallback strategies that worked
+  - environment quirks, paths, versions, credentials locations (not secret values)
+  - user preferences about how work should be done in this repo
+  Exclude: full stack traces, raw command output dumps, one-off timestamps,
+  and secrets (API keys, tokens, passwords).
+
+reader_instructions: |
+  Answer concisely for an autonomous agent: what to try, what to avoid, and
+  which fallback worked. Prefer actionable bullets over narrative.

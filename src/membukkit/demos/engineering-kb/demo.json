@@ -1,0 +1,18 @@
+{
+  "title": "Engineering knowledge base",
+  "description": "Postmortems and architecture decision records across payments, search, and platform topics. Shows bucket routing across subsystems and answers that connect incidents to the decisions they triggered.",
+  "proves": "Incident ↔ ADR: see which topic buckets opened on the map",
+  "prompt_pack": "engineering_kb",
+  "data": [
+    "postmortem_2024-02-14_checkout.md",
+    "postmortem_2024-04-03_search.md",
+    "adr_011_pgbouncer.md",
+    "adr_014_event_bus.md"
+  ],
+  "questions": [
+    "What caused the checkout latency spike in February, and what did we change as a result?",
+    "Why did we adopt pgbouncer, and what are the caveats?",
+    "What monitoring did we add after the stale search results incident?",
+    "Which teams migrate to Kafka and in what order?"
+  ]
+}

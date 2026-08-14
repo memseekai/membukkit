@@ -1,0 +1,13 @@
+{
+  "title": "Customer support brain",
+  "description": "A support ticket archive ingested as memory. Answers cite the exact past tickets (provenance drill-down): recurring customers, related incidents, and what actually fixed things.",
+  "proves": "Which ticket said that? Click through to the exact source",
+  "prompt_pack": "customer_support",
+  "data": ["tickets.csv"],
+  "questions": [
+    "Aurora Foods has export timeouts again. What have we tried before for them?",
+    "What issues followed Helios Energy's API key rotation, and how were they resolved?",
+    "Which agent has handled the most Aurora Foods tickets?",
+    "A customer asks if SyncPro supports Snowflake — what do we know?"
+  ]
+}

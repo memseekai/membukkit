@@ -1,0 +1,16 @@
+title: Engineering knowledge base
+description: >-
+  Postmortems and ADRs — root causes, decisions, tradeoffs, owners, follow-ups.
+
+extraction_instructions: |
+  Extract engineering knowledge:
+  - incident symptoms, root cause, impact, timeline
+  - decisions (ADRs): context, options considered, chosen option, consequences
+  - owners / teams, systems / services named
+  - follow-up actions and monitoring added
+  Preserve service names, error rates, and dates. Skip pure process boilerplate.
+
+reader_instructions: |
+  Connect incidents to the decisions they triggered when both are in evidence.
+  Name systems, teams, and concrete remediations. Prefer facts with dates.
+  If the question asks "why", lead with the decision rationale from the ADR.

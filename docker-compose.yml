@@ -1,0 +1,17 @@
+services:
+  membukkit:
+    image: ghcr.io/memseekai/membukkit:latest
+    build: .
+    ports:
+      - "127.0.0.1:8377:8377"
+    volumes:
+      - membukkit-data:/data
+    environment: # bare names pass the host's value through; unset stays unset
+      - OPENAI_API_KEY
+      - ANTHROPIC_API_KEY
+      - GEMINI_API_KEY
+      - OLLAMA_HOST
+    # Multi-tenant service instead of the GUI (see docs/guide/service.md):
+    # command: membukkit serve --host 0.0.0.0 --port 8080
+volumes:
+  membukkit-data:

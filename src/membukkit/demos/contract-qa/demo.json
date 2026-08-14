@@ -1,0 +1,35 @@
+{
+  "title": "Contract QA",
+  "description": "A master services agreement plus a later amendment. Clause-level answers with citations — including the trap where the amendment supersedes the original (breach notification: 48h became 24h).",
+  "proves": "Later amendment beats the original clause — with citations",
+  "prompt_pack": "contracts",
+  "question_date": "2024-07-01",
+  "data": ["msa_cloudvault.md", "dpa_addendum.md"],
+  "no_distill": false,
+  "questions": [
+    "How quickly must CloudVault notify Meridian of a data breach?",
+    "What service credits apply if uptime drops to 99.5%?",
+    "What is the liability cap for data protection breaches?",
+    "Can Meridian terminate early without breach, and what does it cost?",
+    "Which subprocessors are currently approved?"
+  ],
+  "prove_beats": [
+    {
+      "label": "as of May 2024 (MSA only)",
+      "question": "How quickly must CloudVault notify Meridian of a data breach?",
+      "as_of": "2024-05-01"
+    },
+    {
+      "label": "as of July 2024 (after DPA)",
+      "question": "How quickly must CloudVault notify Meridian of a data breach?",
+      "as_of": "2024-07-01"
+    }
+  ],
+  "ask_callouts": [
+    {
+      "match": "breach",
+      "title": "Supersession",
+      "body": "The DPA addendum shortens breach notification from 48h (MSA) to 24h. Prefer the later dated fact — that is the current obligation."
+    }
+  ]
+}

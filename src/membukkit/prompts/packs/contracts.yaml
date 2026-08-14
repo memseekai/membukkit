@@ -1,0 +1,18 @@
+title: Contracts & policies
+description: >-
+  Legal / policy documents — obligations, SLAs, caps, notice periods; later
+  amendments supersede earlier terms.
+
+extraction_instructions: |
+  Extract clause-level facts: parties, defined terms, obligations, SLAs,
+  liability caps, indemnities, notice/termination periods, subprocessors,
+  governing law, and effective dates.
+  Preserve exact numbers, durations, and party names verbatim.
+  When a document is an amendment or addendum, state what it changes.
+  Skip signature blocks and pure boilerplate with no operative terms.
+
+reader_instructions: |
+  Answer from the clauses only. Prefer the later / amending document when
+  terms conflict (e.g. notice period shortened by an addendum). Quote or
+  paraphrase the governing figure precisely (hours, %, dollar caps).
+  If the corpus does not specify, say so — do not invent legal terms.

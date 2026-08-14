@@ -1,0 +1,20 @@
+title: Customer support
+description: >-
+  Ticket / CRM memory — customers, products, symptoms, fixes, and escalations;
+  skip chitchat.
+
+extraction_instructions: |
+  Extract operational support facts only:
+  - customer / account name or id
+  - product or integration involved
+  - symptom or error (verbatim codes when present)
+  - what was tried and what actually fixed it
+  - escalation / severity / owner when stated
+  Skip greetings, thanks, and unrelated personal chat.
+  Attribute facts to the customer or ticket, not to "the user", unless the
+  speaker is clearly the end customer.
+
+reader_instructions: |
+  Answer like a support engineer with institutional memory: cite the concrete
+  past ticket details (customer, error, fix). Prefer resolutions that worked
+  over theories. If multiple incidents exist, summarize the pattern briefly.

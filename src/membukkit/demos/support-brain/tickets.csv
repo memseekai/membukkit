@@ -1,0 +1,11 @@
+ticket_id,created_at,customer,product,issue,resolution,agent
+T-1001,2024-02-03,Aurora Foods,SyncPro,Nightly export to SFTP fails with timeout after 30s,Increased the SFTP timeout to 120s in their connector config; root cause was their firewall throttling,Priya
+T-1002,2024-02-11,Northwind Retail,SyncPro,Duplicate rows appearing in the orders table after re-sync,Enabled idempotent upsert mode (dedupe on order_id); explained that plain append mode re-inserts on retry,Marco
+T-1003,2024-02-25,Aurora Foods,Dashboards,CSV download button greyed out for viewer-role users,Working as designed — viewers cannot export; granted their analysts the editor role instead,Priya
+T-1004,2024-03-07,Helios Energy,SyncPro,Webhook deliveries stopped after they rotated their API keys,Old key was still configured on webhook endpoint; walked them through re-registering webhooks after any key rotation,Sofia
+T-1005,2024-03-19,Northwind Retail,Dashboards,Revenue dashboard shows numbers 5% lower than their internal reports,Their internal report included cancelled orders; added a toggle to include/exclude cancelled orders,Marco
+T-1006,2024-04-02,Aurora Foods,SyncPro,Export failing again with timeout even at 120s,Their nightly file grew past 2GB; switched them to chunked export mode which streams in 200MB parts,Priya
+T-1007,2024-04-15,Baltic Freight,API,Rate limited at 429 during their batch imports every Monday morning,Their cron fired 40 parallel workers; advised batching to 5 concurrent with exponential backoff and raised their limit tier,Sofia
+T-1008,2024-05-01,Helios Energy,API,Getting 401 errors intermittently since the key rotation ticket,They had two services using the deprecated key; audited usage via key-level logs and revoked the old key after migration,Sofia
+T-1009,2024-05-14,Northwind Retail,SyncPro,Asking whether SyncPro supports Snowflake as a destination,Yes since v3.2; shared setup guide and noted their plan already includes it,Marco
+T-1010,2024-06-04,Aurora Foods,Dashboards,Scheduled email reports arriving at 3am instead of 8am local time,Their workspace timezone was UTC; set workspace timezone to Europe/Berlin and reports now send at 8am local,Priya

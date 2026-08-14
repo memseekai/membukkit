@@ -1,0 +1,95 @@
+site_name: MemBukkit
+site_description: >-
+  Open long-term memory you can trust — dated facts, as-of answers,
+  supersession, and clickable receipts for agents and documents.
+site_url: https://memseekai.github.io/membukkit/
+repo_url: https://github.com/MemseekAI/membukkit
+repo_name: MemseekAI/membukkit
+edit_uri: edit/main/docs/
+copyright: Copyright &copy; MemBukkit contributors
+
+docs_dir: docs
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.tracking
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue-grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue-grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Guides:
+      - Install: guide/install.md
+      - Docker: guide/docker.md
+      - Quickstart: guide/quickstart.md
+      - Bring your own: guide/bring-your-own.md
+      - Agents: guide/agents.md
+      - Documents: guide/documents.md
+      - Deleting memories: guide/deleting.md
+      - Demos: guide/demos.md
+      - MCP: guide/mcp.md
+      - When to use: guide/when-to-use.md
+      - Customization: guide/customization.md
+      - Library API: guide/library.md
+      - Storage backends: guide/storage.md
+      - Memory service: guide/service.md
+      - Benchmarks: guide/benchmarks.md
+      - Observability & telemetry: guide/observability.md
+      - Troubleshooting: guide/troubleshooting.md
+  - Method: METHOD.md
+  - RAG mode: RAG.md
+  - HTTP API reference: reference/http-api.md
+  - Code walkthrough: code-walkthrough.md

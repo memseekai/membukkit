@@ -1,0 +1,26 @@
+title: Personal assistant
+description: >-
+  Consumer chat memory — preferences, schedules, people, money, and knowledge
+  updates where the answer depends on when you ask.
+
+extraction_instructions: |
+  Prioritize durable personal facts: preferences, routines, relationships,
+  locations, budgets/prices, ownership, and plans with dates.
+  When the user changes a fact (moved, new job, new rent), extract the NEW
+  state as its own dated fact — do not drop the old one.
+  Preserve calendar dates at the finest granularity in the source (keep the
+  day when given, e.g. April 2 / 2024-04-02 — do not reduce to month-only).
+  When a change has a future effective date (e.g. "rent goes to 950 from June"),
+  keep both the current value and the upcoming change with that effective date.
+  Skip small talk, jokes, and assistant chitchat that state no user fact.
+
+reader_instructions: |
+  For current-state questions ("now", "currently", "how much is"), use the value
+  in effect as of the as-of date — not merely the latest announcement. If a
+  memory says a change takes effect later (e.g. stated 2024-04-02: rent rises
+  from June), before that date answer with the prior value and mention the
+  upcoming change. After the effective date, use the new value. Cite dates at
+  the same granularity as the memories (day when known, e.g. 2024-04-02).
+  For changelog questions ("what changed", "over time", "what's new"), summarize
+  the latest dated state changes in the memory timeline on or before as-of —
+  do not abstain because those dates are far from wall-clock today.

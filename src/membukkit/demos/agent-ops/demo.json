@@ -1,0 +1,13 @@
+{
+  "title": "Agent ops memory",
+  "description": "An agent records a failed deploy tool call, then the fix that worked. Later runs ask memory before retrying — durable lessons from tool feedback, not chat archives.",
+  "proves": "Tool failure → fix written to memory → later ask recalls what worked",
+  "prompt_pack": "agent_ops",
+  "question_date": "2024-07-15",
+  "data": ["ops_log.json"],
+  "questions": [
+    "Last time deploy failed — what fallback worked?",
+    "What kubectl timeout should we use for staging deploys?",
+    "What went wrong the first time we talked to the staging cluster?"
+  ]
+}

@@ -1,0 +1,39 @@
+[
+  {"date": "2024-01-08", "turns": [
+    {"role": "user", "content": "New year, new me. I'm starting a strict budget: 800€ rent, 300€ groceries, 150€ going out. Everything above that goes to savings."},
+    {"role": "assistant", "content": "Got it — 1250€ monthly spending cap, surplus to savings. I'll keep track."},
+    {"role": "user", "content": "Also signed up for the gym near work, the FitLab on Rosenthaler Straße. Tuesday and Thursday mornings before standup."}
+  ]},
+  {"date": "2024-01-22", "turns": [
+    {"role": "user", "content": "My sister Lena's birthday is March 14th. She's been hinting about ceramics classes, remind me to book one in early March."},
+    {"role": "user", "content": "Also for the record: my landlord's contact is Herr Weber, weber.hausverwaltung@example.com — I always lose that email."}
+  ]},
+  {"date": "2024-02-05", "turns": [
+    {"role": "user", "content": "Work update: I got staffed on the Meridian project, it's a data platform migration for a logistics client. I'm the backend lead."},
+    {"role": "assistant", "content": "Congrats on the lead role! Noted that you're backend lead on Meridian."},
+    {"role": "user", "content": "The catch is a weekly Wednesday 7am call with the Singapore team. So I'm moving my Thursday gym slot to Friday."}
+  ]},
+  {"date": "2024-02-19", "turns": [
+    {"role": "user", "content": "Booked the ceramics class for Lena — March 9th at Studio Ton in Kreuzberg, 65€ for the two of us. Comes out of the going-out budget."}
+  ]},
+  {"date": "2024-03-18", "turns": [
+    {"role": "user", "content": "The ceramics class was a hit, Lena loved it. She made a bowl, I made something that might be an ashtray."},
+    {"role": "user", "content": "Budget check: February came in 90€ over on groceries but 200€ under on going out. Net positive."}
+  ]},
+  {"date": "2024-04-02", "turns": [
+    {"role": "user", "content": "Big change: my rent is going up to 950€ from June. Adjusting the budget — groceries stay at 300€, going out drops to 100€."},
+    {"role": "user", "content": "Also the Meridian project got extended through September. The Singapore call moved to Thursdays 8am, so I can go back to Tuesday/Thursday gym... wait no, Thursday is out. Tuesday and Friday it stays."}
+  ]},
+  {"date": "2024-04-29", "turns": [
+    {"role": "user", "content": "Started learning Portuguese on the side — 20 minutes every morning before work, aiming for basic conversation by summer."},
+    {"role": "user", "content": "Because: I'm planning a week in Lisbon with Lena in July, budget 900€ total for the both of us. She's covering flights, I'm covering the apartment."}
+  ]},
+  {"date": "2024-05-20", "turns": [
+    {"role": "user", "content": "Lisbon is booked! Apartment in Alfama, July 15-22, 480€ my share. Leaves 420€ for everything else."},
+    {"role": "user", "content": "Gym update: FitLab is closing their Rosenthaler location in June. Switching to their Prenzlauer Berg branch, same schedule."}
+  ]},
+  {"date": "2024-06-10", "turns": [
+    {"role": "user", "content": "Meridian milestone shipped — the ingestion pipeline is live. My manager Dara hinted at a promotion conversation in the September review."},
+    {"role": "user", "content": "First month of the new 950€ rent. Going-out budget of 100€ is rough but holding."}
+  ]}
+]

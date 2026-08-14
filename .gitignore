@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+local_env.sh
+
+# MemBukkit local state
+.membukkit_emb_cache/
+.membukkit_task_cache/
+stores/
+runs/
+results/
+
+# Node / frontend
+node_modules/
+ui/dist/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Docs build output
+site/
+
+# Data & model artifacts
+*.sqlite
+distill_cache_*.json
+/models/

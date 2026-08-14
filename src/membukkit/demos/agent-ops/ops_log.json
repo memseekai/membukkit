@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2024-07-01",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Tool deploy failed: ERROR: kubectl timeout talking to staging cluster. Will retry with longer timeout."
+      }
+    ]
+  },
+  {
+    "date": "2024-07-01",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Tool deploy_retry succeeded: ok — used --request-timeout=60s. Remember: staging deploys need --request-timeout=60s."
+      }
+    ]
+  }
+]
