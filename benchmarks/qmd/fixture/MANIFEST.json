@@ -1,0 +1,18 @@
+{
+  "upstream_repo": "https://github.com/tobi/qmd",
+  "upstream_commit": "40fb36f4adc92849ac607e8e76941eabad6e84be",
+  "fetched_paths": {
+    "example.json": "src/bench/fixtures/example.json",
+    "eval-docs/": "test/eval-docs/"
+  },
+  "note": "Vendored verbatim. Do not edit; re-fetch with benchmarks/qmd/fetch_fixture.py.",
+  "sha256": {
+    "eval-docs/api-design-principles.md": "762e738a5a65405aab5c55d6b06f12264a19a9162a34028812a17454cfaf4d66",
+    "eval-docs/distributed-systems-overview.md": "df12ed3af72797828f4fc476563f08b74521b1c57e0a28ca331835cacd48bf9a",
+    "eval-docs/machine-learning-primer.md": "c0821ab3c9145346bcbd681851487d771e53356789c2e4aa8ebfb61b8a02af84",
+    "eval-docs/product-launch-retrospective.md": "80dc014f96a00681045cb35b417c599b657d5f7134e6bc9ea6dc35ebeede0a7e",
+    "eval-docs/remote-work-policy.md": "b77db4baef0d68f56bf4fc75cd46dfc38238e0c6cde63264e631396f3b6d62a0",
+    "eval-docs/startup-fundraising-memo.md": "59b6c30424693f237ad253d37c045d7a5187766ffc2525bc2eec1eab729a940c",
+    "example.json": "8449121504d235912dac5d4874bb1c4670d03f90fd720f4ac632174b6c4548e9"
+  }
+}

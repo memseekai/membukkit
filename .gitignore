@@ -40,3 +40,6 @@ site/
 *.sqlite
 distill_cache_*.json
 /models/
+
+# benchmark run outputs (regenerate with benchmarks/*/run.py)
+benchmarks/results/*.json

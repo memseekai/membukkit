@@ -51,6 +51,7 @@ observability = ["logfire[fastapi,httpx,system-metrics]>=3.0"]
 docs = ["mkdocs-material>=9.5"]
 mcp = ["mcp>=1.2.0"]
 bm25 = ["rank-bm25>=0.2.2"]
+bench = ["pyarrow>=15.0"]  # HotpotQA parquet for benchmarks/
 service = [
     "fastapi>=0.110.0",
     "uvicorn[standard]>=0.29.0",
@@ -124,4 +125,4 @@ docstring-code-format = true
 [tool.pytest.ini_options]
 addopts = "-ra"
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]  # "." so tests can import the benchmarks/ package
