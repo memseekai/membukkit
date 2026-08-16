@@ -42,7 +42,7 @@ def run(
     progress_every: int = 25,
 ) -> Dict:
     questions = ds.load_questions(split=split, limit=limit, seed=seed)
-    print(f"loaded {len(questions)} questions from HotpotQA {split} (distractor)")
+    print(f"loaded {len(questions)} questions from HotpotQA {split} (distractor)", flush=True)
 
     mem = harness.build_retrieval_system()
     per_query: List[Dict] = []
@@ -90,7 +90,12 @@ def run(
         )
         if progress_every and i % progress_every == 0:
             el = time.perf_counter() - t0
-            print(f"  {i}/{len(questions)}  ({el:.0f}s elapsed, {el / i:.2f}s/question)")
+            # flush: stdout is block-buffered when redirected to a file, so
+            # without this a long run shows no progress until it finishes.
+            print(
+                f"  {i}/{len(questions)}  ({el:.0f}s elapsed, {el / i:.2f}s/question)",
+                flush=True,
+            )
 
     subsets = {
         "overall": _subset_summary(per_query),

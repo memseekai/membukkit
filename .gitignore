@@ -43,3 +43,6 @@ distill_cache_*.json
 
 # benchmark run outputs (regenerate with benchmarks/*/run.py)
 benchmarks/results/*.json
+
+# stray qmd index if qmd is run from this directory
+.qmd/
