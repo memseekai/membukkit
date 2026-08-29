@@ -45,10 +45,14 @@ jobs:
       - name: Vendored QMD fixture matches its manifest
         run: uv run python -m benchmarks.qmd.fetch_fixture --verify
       - name: Benchmark modules import cleanly
-        run: >
-          uv run python -c "
-          import benchmarks.multihop.run, benchmarks.multihop.export_corpus;
-          import benchmarks.multihop.run_fixture;
-          import benchmarks.hotpotqa.run, benchmarks.hotpotqa.export_corpus;
-          import benchmarks.qmd.run, benchmarks.common.qmd_report;
-          print('benchmark entry points import OK')"
+        run: |
+          uv run python - <<'EOF'
+          import benchmarks.multihop.run
+          import benchmarks.multihop.export_corpus
+          import benchmarks.multihop.run_fixture
+          import benchmarks.hotpotqa.run
+          import benchmarks.hotpotqa.export_corpus
+          import benchmarks.qmd.run
+          import benchmarks.common.qmd_report
+          print("benchmark entry points import OK")
+          EOF
