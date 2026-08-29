@@ -31,6 +31,10 @@ class RetrievalConfig:
     scan_budget_temporal: Optional[float] = None
     scan_budget_reason: float = 0.45
     bucket_mode: str = "topic"
+    # Within-region ranking. "hybrid" (shipped): RRF over cosine + cross-encoder
+    # ranks. "cosine": cosine-top-`rerank_cap` prefilter, then cross-encoder
+    # order. "xenc": cross-encoder order alone. "none": plain cosine, the
+    # cross-encoder never runs (the drop-reranker ablation arm).
     select: str = "hybrid"
     top_k: int = 10
     reasoning_top_k: int = 30

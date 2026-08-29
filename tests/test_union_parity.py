@@ -290,3 +290,28 @@ def test_union_off_is_single_index_atomic_only():
 
     res = mem.answer("What kind of dog is Luna?", generate_answer=False)
     assert res.facts  # retrieval still returns atomic facts
+
+
+def test_select_none_never_calls_cross_encoder():
+    """select='none' is the drop-the-reranker ablation arm: plain cosine order,
+    the cross-encoder must never be invoked (unlike select='cosine', which
+    still lets the cross-encoder order the capped pool)."""
+
+    class ExplodingReranker:
+        def score(self, query, texts, batch_size=64):
+            raise AssertionError("cross-encoder was called in select='none'")
+
+    cfg = _cfg()
+    cfg.select = "none"
+    mem = MemorySystem(
+        encoder=FakeEncoder(),
+        reranker=ExplodingReranker(),
+        llm_fn=lambda p: "unused",
+        retrieval=cfg,
+        prompts=PromptConfig.default(),
+        distiller=FakeDistiller(),
+    )
+    mem.ingest(sessions=_SESSIONS, dates=_DATES)
+
+    res = mem.answer("What kind of dog is Luna?", generate_answer=False)
+    assert res.facts  # retrieval works without the reranker ever running

@@ -549,7 +549,9 @@ class InMemoryBackend:
             if select == "cosine" and rcap and len(cand_idx) > rcap:
                 rcos = fe[cand_idx] @ qe
                 cand_idx = [cand_idx[j] for j in np.argsort(rcos)[::-1][:rcap]]
-            elif select == "hybrid":
+            elif select in ("hybrid", "none"):
+                # "none" needs cosines attached: the pipeline orders by them
+                # directly (plain-cosine arm, cross-encoder skipped entirely).
                 cosines = fe[cand_idx] @ qe
                 has_cosine = True
         else:
@@ -619,7 +621,9 @@ class InMemoryBackend:
             if select == "cosine" and rcap and len(local) > rcap:
                 rcos = sub[local] @ qe
                 local = [local[j] for j in np.argsort(rcos)[::-1][:rcap]]
-            elif select == "hybrid":
+            elif select in ("hybrid", "none"):
+                # "none" needs cosines attached: the pipeline orders by them
+                # directly (plain-cosine arm, cross-encoder skipped entirely).
                 cosines = sub[local] @ qe
                 has_cosine = True
         else:

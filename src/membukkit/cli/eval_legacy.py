@@ -1565,7 +1565,16 @@ def main():
     ev.add_argument("--bucket-k", type=int, default=24)
     ev.add_argument("--bucket-rerank-cap", type=int, default=50)
     ev.add_argument("--bucket-k-proto", type=int, default=0)
-    ev.add_argument("--rerank-select", default="hybrid", choices=["cosine", "xenc", "hybrid"])
+    ev.add_argument(
+        "--rerank-select",
+        default="hybrid",
+        choices=["cosine", "xenc", "hybrid", "none"],
+        help="Within-region ranking: 'hybrid' fuses cosine + cross-encoder via RRF "
+        "(shipped); 'cosine' caps the region to its cosine-top-N and the "
+        "cross-encoder orders that pool; 'xenc' is cross-encoder order alone; "
+        "'none' removes the cross-encoder entirely (plain cosine order — the "
+        "83.4 LME-S ablation arm).",
+    )
     ev.add_argument("--methods", default="coremem_union")
     ev.add_argument(
         "--retrieval-engine",

@@ -1156,24 +1156,38 @@ class MemorySystem:
             if not cands:
                 return [], pool.trace
 
-            with telemetry.timed(
-                "memory.rerank",
-                telemetry.histogram("membukkit.rerank.duration"),
-                n_candidates=len(cands),
-            ):
-                util = self._reranker.score(query, [c.text for c in cands])
-
-            if cfg.select == "hybrid" and pool.has_cosine:
-                from membukkit.retrieval.buckets import rrf_order
-
-                cos = np.asarray([c.cosine for c in cands], dtype=np.float64)
-                if pool.has_lexical:
-                    lex = np.asarray([c.lexical for c in cands], dtype=np.float64)
-                    order = rrf_order(util, cos, lex, k_rrf=cfg.k_rrf)
+            if cfg.select == "none":
+                # Plain-cosine ablation arm: the cross-encoder never runs.
+                # This is the paper's "cosine only (no C.E.)" condition (83.4 on
+                # LME-S vs hybrid's 82.0, paired p=0.40) — distinct from
+                # select="cosine", which caps the pool by cosine and then still
+                # lets the cross-encoder order it.
+                if pool.has_cosine:
+                    cos = np.asarray([c.cosine for c in cands], dtype=np.float64)
+                    order = list(np.argsort(cos)[::-1])
                 else:
-                    order = rrf_order(util, cos, k_rrf=cfg.k_rrf)
+                    # Flat/backend pools arrive already cosine- (or server-rank-)
+                    # ordered, so pool order IS cosine order.
+                    order = list(range(len(cands)))
             else:
-                order = list(np.argsort(util)[::-1])
+                with telemetry.timed(
+                    "memory.rerank",
+                    telemetry.histogram("membukkit.rerank.duration"),
+                    n_candidates=len(cands),
+                ):
+                    util = self._reranker.score(query, [c.text for c in cands])
+
+                if cfg.select == "hybrid" and pool.has_cosine:
+                    from membukkit.retrieval.buckets import rrf_order
+
+                    cos = np.asarray([c.cosine for c in cands], dtype=np.float64)
+                    if pool.has_lexical:
+                        lex = np.asarray([c.lexical for c in cands], dtype=np.float64)
+                        order = rrf_order(util, cos, lex, k_rrf=cfg.k_rrf)
+                    else:
+                        order = rrf_order(util, cos, k_rrf=cfg.k_rrf)
+                else:
+                    order = list(np.argsort(util)[::-1])
 
             sel = order[:top_k]
             return [cands[j] for j in sel], pool.trace

@@ -136,7 +136,7 @@ What the research found, on LongMemEval-S (500 questions, official gpt-4o judge,
 - Full-context reading scores 56.4% against MemBukkit's 82.0% with the same reader and judge, a +25.6 point gap (paired 95% CI [20.8, 30.4]), while MemBukkit reads ~3.2k tokens per question instead of ~100k.
 - Excluding the buckets an answer's receipt names collapses accuracy from 80.0% to 1.3%. Excluding a matched random set leaves it at 82.3%.
 - Given identical ingestion, extraction-only Mem0 scores 21.4% on questions answered in the assistant's own replies, where the verbatim lane scores 92.9%. Lane ablation: verbatim-only 75.4%, atomic-only 58.0%, both 82.8%.
-- Plain cosine order (83.4%) statistically ties the shipped reranking config (82.0%) within the same opened region. Swapping the fine-tuned encoder for an off-the-shelf one moves the score by just −0.4 (p=0.81).
+- Dropping the cross-encoder entirely and ranking the same opened region by plain cosine (83.4%, `--rerank-select none`) statistically ties the shipped hybrid config (82.0%, paired p=0.40). Swapping the fine-tuned encoder for an off-the-shelf one moves the score by just −0.4 (p=0.81). The reranker is tail insurance, not the headline.
 
 Single-pass ask, no agentic re-query loops, official judges. LLM readers and judges are stochastic, so scores reproduce as bands, not bit-exact values. Judges, costs, and per-category breakdowns: [Benchmarks guide](https://github.com/memseekai/membukkit/blob/main/docs/guide/benchmarks.md).
 
