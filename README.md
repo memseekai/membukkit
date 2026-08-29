@@ -140,6 +140,14 @@ What the research found, on LongMemEval-S (500 questions, official gpt-4o judge,
 
 Single-pass ask, no agentic re-query loops, official judges. LLM readers and judges are stochastic, so scores reproduce as bands, not bit-exact values. Judges, costs, and per-category breakdowns: [Benchmarks guide](https://github.com/memseekai/membukkit/blob/main/docs/guide/benchmarks.md).
 
+### Retrieval, measured directly
+
+Answer quality is one thing, retrieval is another, so there is a second suite that grades retrieval alone with no LLM and no judge in the loop: HotpotQA multi-hop, 1,000 questions, scored against [qmd](https://github.com/tobi/qmd) by the same metric functions over the same candidate sets.
+
+A multi-hop question needs two documents, and one of two is a miss, not half a success. On finding **both**, MemBukkit's document-retrieval path reaches 87.4% against qmd's best backend at 86.1% while answering in 47ms against 1,222ms. A heavier configuration, swapping in a 0.6B encoder and adding query decomposition driven by a local 1.7B model, reaches 90.8%. On the bridge questions that actually require two hops the gap is 88.4% against 82.3%. qmd stays a little ahead at putting *one* right document in first place, 93.2% against 92.1%, a difference inside sampling noise.
+
+Read it with the setup, which is in the [benchmark notes](https://github.com/memseekai/membukkit/blob/main/benchmarks/README.md): those rows measure the document-retrieval configuration of the stack rather than the chunked path `membukkit search` runs today, the candidate sets are small enough that both systems saturate at k=10, and qmd's lexical backend scored zero on these long natural-language queries in a way that looks like a configuration artifact rather than a real result.
+
 Known limits, so nothing surprises you later: distillation is an LLM call per session at write time (cached), so the cost moves rather than vanishing. Updates supersede rather than overwrite, so the old fact stays stored, which is what makes as-of queries possible; when you want a fact gone for real, [delete it](https://github.com/memseekai/membukkit/blob/main/docs/guide/deleting.md). And the distiller bounds the atomic lane: small local models extract weaker facts, and the verbatim lane limits the damage.
 
 ## Bring your data

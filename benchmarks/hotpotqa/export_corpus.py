@@ -20,16 +20,10 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
-import re
 from typing import Dict, List
 
+from benchmarks.common.paths import unique_filename
 from benchmarks.hotpotqa import dataset as ds
-
-
-def slugify(title: str) -> str:
-    """Filesystem-safe, collision-resistant filename for a document title."""
-    slug = re.sub(r"[^a-zA-Z0-9._-]+", "-", title).strip("-").lower()
-    return (slug or "untitled")[:120]
 
 
 def export(
@@ -50,10 +44,7 @@ def export(
         used: Dict[str, int] = {}
         title_to_file: Dict[str, str] = {}
         for doc in q.docs:
-            base = slugify(doc["title"])
-            n = used.get(base, 0)
-            used[base] = n + 1
-            name = f"{base}.md" if n == 0 else f"{base}-{n}.md"
+            name = unique_filename(doc["title"], used)
             (qdir / name).write_text(doc["text"])
             title_to_file[doc["title"]] = name
 

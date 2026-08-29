@@ -19,6 +19,36 @@ jobs:
       - name: Install
         run: uv sync --extra service --extra pdf --extra bm25
       - name: Lint
-        run: uv run ruff check src tests
+        run: uv run ruff check src tests benchmarks
       - name: Test
         run: uv run pytest -x -q
+
+  benchmarks:
+    # Retrieval benchmarks are model- and network-heavy, so CI checks only the
+    # parts that can be verified without either: metric maths, dataset parsing,
+    # retrieval logic against injected fake models, and fixture integrity.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: uv sync --extra bench --extra bm25
+      - name: Benchmark unit tests
+        run: >
+          uv run pytest -q
+          tests/test_benchmark_metrics.py
+          tests/test_multihop_dataset.py
+          tests/test_rag_retriever.py
+          tests/test_qmd_protocol.py
+      - name: Vendored QMD fixture matches its manifest
+        run: uv run python -m benchmarks.qmd.fetch_fixture --verify
+      - name: Benchmark modules import cleanly
+        run: >
+          uv run python -c "
+          import benchmarks.multihop.run, benchmarks.multihop.export_corpus;
+          import benchmarks.multihop.run_fixture;
+          import benchmarks.hotpotqa.run, benchmarks.hotpotqa.export_corpus;
+          import benchmarks.qmd.run, benchmarks.common.qmd_report;
+          print('benchmark entry points import OK')"
