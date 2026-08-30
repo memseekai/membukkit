@@ -196,16 +196,37 @@ def evaluate_banks(reranker, banks: List[Bank], pool_size: int, top_k: int) -> D
     }
 
 
+def _load_encoder(spec: str):
+    """Load the hard-negative mining encoder.
+
+    Accepts a sentence-transformers name/path, or an ``openai:MODEL[@DIMS]``
+    spec (disk-cached) so the reranker can be trained on the miss-tail of the
+    exact bi-encoder it will be deployed next to.
+    """
+    if spec.startswith("openai:"):
+        from membukkit.models.openai_encoder import make_openai_encoder
+
+        base = make_openai_encoder(spec)
+
+        class _Adapter:
+            def encode(self, texts, show_progress_bar=False):
+                return np.asarray(base.encode(texts), dtype=np.float32)
+
+        return _Adapter()
+    from sentence_transformers import SentenceTransformer
+
+    return SentenceTransformer(spec)
+
+
 def run(args) -> None:
     global _ENCODER
-    from sentence_transformers import SentenceTransformer
     from membukkit.models.reranker import UtilityReranker
 
     out_dir = Path(args.output_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     logger.info("Loading encoder...")
-    _ENCODER = SentenceTransformer(args.encoder)
+    _ENCODER = _load_encoder(args.encoder)
 
     logger.info("Loading TRAIN banks...")
     train_banks = load_banks(_ENCODER, args.max_lme_train)

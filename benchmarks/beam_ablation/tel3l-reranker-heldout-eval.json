@@ -1,0 +1,18 @@
+{
+  "n_queries": 40,
+  "cosine": {
+    "hit@k": 1.0,
+    "recall@k": 0.24743001442131032,
+    "mrr": 0.9875
+  },
+  "reranker": {
+    "hit@k": 1.0,
+    "recall@k": 0.25028239965785204,
+    "mrr": 1.0
+  },
+  "cosine_miss_tail": {
+    "n_tail": 0,
+    "recovered": 0,
+    "recovery_rate": 0.0
+  }
+}
