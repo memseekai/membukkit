@@ -23,6 +23,8 @@ local_env.sh
 stores/
 runs/
 results/
+# checked-in benchmark artifacts (per-question rankings + summaries)
+!benchmarks/longmemeval_session_recall/results/
 
 # Node / frontend
 node_modules/

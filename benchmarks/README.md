@@ -3,6 +3,10 @@
 Document-retrieval benchmarks for MemBukkit. All are **retrieval only**: no
 answer generation, no LLM judge, and no API key needed for any default mode.
 
+For the conversational-memory equivalent (session-level Recall@5 on the original
+LongMemEval-S split, the metric gbrain and MemPalace publish), see
+[`longmemeval_session_recall/`](longmemeval_session_recall/README.md).
+
 ```bash
 # Shared-corpus multi-hop: the ones that actually separate retrievers
 uv run python -m benchmarks.multihop.run --dataset musique --mode chain
