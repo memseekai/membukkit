@@ -1,0 +1,107 @@
+{
+  "dataset": "original",
+  "lanes": [
+    "verbatim"
+  ],
+  "encoder": "openai:text-embedding-3-large@1536",
+  "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "rerank_select": "hybrid",
+  "config": {
+    "top_k": 10,
+    "reasoning_top_k": 30,
+    "bucket_k": 24,
+    "candidate_pool": 50,
+    "rank_depth": 50,
+    "scan_budget": 1.0
+  },
+  "all_questions": {
+    "n": 500,
+    "any_gold@1": 0.946,
+    "all_gold@1": 0.326,
+    "any_gold@3": 0.99,
+    "all_gold@3": 0.876,
+    "any_gold@5": 0.996,
+    "all_gold@5": 0.95,
+    "any_gold@10": 0.998,
+    "all_gold@10": 0.982
+  },
+  "excluding_abstention": {
+    "n": 470,
+    "any_gold@1": 0.9468085106382979,
+    "all_gold@1": 0.3382978723404255,
+    "any_gold@3": 0.9893617021276596,
+    "all_gold@3": 0.8851063829787233,
+    "any_gold@5": 0.9957446808510638,
+    "all_gold@5": 0.9531914893617022,
+    "any_gold@10": 0.997872340425532,
+    "all_gold@10": 0.9808510638297873
+  },
+  "by_type": {
+    "knowledge-update": {
+      "n": 78,
+      "any_gold@1": 0.9871794871794872,
+      "all_gold@1": 0.0,
+      "any_gold@3": 1.0,
+      "all_gold@3": 1.0,
+      "any_gold@5": 1.0,
+      "all_gold@5": 1.0,
+      "any_gold@10": 1.0,
+      "all_gold@10": 1.0
+    },
+    "multi-session": {
+      "n": 133,
+      "any_gold@1": 0.9699248120300752,
+      "all_gold@1": 0.0,
+      "any_gold@3": 1.0,
+      "all_gold@3": 0.7593984962406015,
+      "any_gold@5": 1.0,
+      "all_gold@5": 0.9398496240601504,
+      "any_gold@10": 1.0,
+      "all_gold@10": 0.9774436090225563
+    },
+    "single-session-assistant": {
+      "n": 56,
+      "any_gold@1": 1.0,
+      "all_gold@1": 1.0,
+      "any_gold@3": 1.0,
+      "all_gold@3": 1.0,
+      "any_gold@5": 1.0,
+      "all_gold@5": 1.0,
+      "any_gold@10": 1.0,
+      "all_gold@10": 1.0
+    },
+    "single-session-preference": {
+      "n": 30,
+      "any_gold@1": 0.8333333333333334,
+      "all_gold@1": 0.8333333333333334,
+      "any_gold@3": 0.9333333333333333,
+      "all_gold@3": 0.9333333333333333,
+      "any_gold@5": 1.0,
+      "all_gold@5": 1.0,
+      "any_gold@10": 1.0,
+      "all_gold@10": 1.0
+    },
+    "single-session-user": {
+      "n": 70,
+      "any_gold@1": 0.9142857142857143,
+      "all_gold@1": 0.9142857142857143,
+      "any_gold@3": 1.0,
+      "all_gold@3": 1.0,
+      "any_gold@5": 1.0,
+      "all_gold@5": 1.0,
+      "any_gold@10": 1.0,
+      "all_gold@10": 1.0
+    },
+    "temporal-reasoning": {
+      "n": 133,
+      "any_gold@1": 0.9172932330827067,
+      "all_gold@1": 0.13533834586466165,
+      "any_gold@3": 0.9774436090225563,
+      "all_gold@3": 0.7894736842105263,
+      "any_gold@5": 0.9849624060150376,
+      "all_gold@5": 0.8721804511278195,
+      "any_gold@10": 0.9924812030075187,
+      "all_gold@10": 0.9548872180451128
+    }
+  }
+}

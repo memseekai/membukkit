@@ -126,7 +126,8 @@ def main() -> int:
     ap.add_argument("--distill-cache", default=None, help="required when lanes include atomic")
     ap.add_argument("--distill-model", default="gpt-4o-mini")
     ap.add_argument("--encoder", default="biencoder_v1", help="local model name/path or openai:MODEL[@DIMS]")
-    ap.add_argument("--reranker", default="reranker_v2/model")
+    ap.add_argument("--reranker", default="reranker_v2/model", help="local path or HF id, e.g. cross-encoder/ms-marco-MiniLM-L-6-v2")
+    ap.add_argument("--rerank-select", default="hybrid", choices=("hybrid", "cosine", "xenc", "none"))
     ap.add_argument("--top-k", type=int, default=10)
     ap.add_argument("--reasoning-top-k", type=int, default=30)
     ap.add_argument("--bucket-k", type=int, default=24)
@@ -182,6 +183,7 @@ def main() -> int:
                 candidate_pool=args.cand,
                 union=True,
                 union_lanes=lanes,
+                select=args.rerank_select,
             )
             if args.scan_budget is not None:
                 cfg_kwargs.update(
@@ -252,6 +254,7 @@ def main() -> int:
         "lanes": list(lanes),
         "encoder": args.encoder,
         "reranker": args.reranker,
+        "rerank_select": args.rerank_select,
         "config": {
             "top_k": args.top_k,
             "reasoning_top_k": args.reasoning_top_k,
